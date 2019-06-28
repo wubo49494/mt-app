@@ -23,7 +23,7 @@ router.get('/getPosition', async (ctx) => {
   } else {
     ctx.body = {
       province: '',
-      city: ''
+      city: '1'
     }
   }
 })
