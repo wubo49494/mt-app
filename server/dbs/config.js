@@ -28,7 +28,5 @@ module.exports = {
         return new Date().getTime() + 60 * 1000
       }
     }
-  },
-  sign: 'a3c9fe0782107295ee9f1709edd15218',
-  requestUrl: 'http://cp-tools.cn'
+  }
 }
