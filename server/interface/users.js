@@ -46,9 +46,7 @@ router.post('/signup', async (ctx) => {
       msg: '请填写验证码'
     }
   }
-
-  console.log('准备查找数据库')
-
+  // 链接数据库查找该用户名是否被注册
   let user = await User.find({
     username
   })
@@ -56,32 +54,17 @@ router.post('/signup', async (ctx) => {
   if (user.length) {
     ctx.body = {
       code: -1,
-      msg: 'y已被注册'
+      msg: '用户名已被注册'
     }
     return false
   }
-  console.log('准备查找数据库2')
+  // 把用户的信息存放进数据内
   let newuser = await User.create({
     username,
     password,
     email
   })
-  console.log('23456')
   if (newuser) {
-    // let res = await axios.post('/users/signin', { username, password })
-    // if (res.data && res.data.code === 0) {
-    //   console.log('res.data这里')
-    //   ctx.body = {
-    //     code: 0,
-    //     msg: '注册成功',
-    //     user: res.data.user
-    //   }
-    // } else {
-    //   ctx.body = {
-    //     code: -1,
-    //     msg: 'error'
-    //   }
-    // }
     ctx.body = {
       code: 0,
       msg: '注册成功'
